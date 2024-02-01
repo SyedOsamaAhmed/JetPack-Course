@@ -25,6 +25,9 @@ import androidx.compose.material3.CardDefaults
 //import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -44,6 +47,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import kotlin.random.Random
 
 
 //import com.example.jetpackcomposecourse.ui.theme.JetPackComposeCourseTheme
@@ -53,52 +57,52 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            val painter = painterResource(id = R.drawable.desert_sunset)
-            val description = "Sunset Dessert"
-            val title = "Sunset View in Dessert"
+//            val painter = painterResource(id = R.drawable.desert_sunset)
+//            val description = "Sunset Dessert"
+//            val title = "Sunset View in Dessert"
+//
+//            val fontFamily= FontFamily(
+//                Font(R.font.manrope_light, FontWeight.Light),
+//                Font(R.font.manrope_medium, FontWeight.Medium),
+//                Font(R.font.manrope_regular, FontWeight.Normal),
+//                Font(R.font.manrope_bold, FontWeight.Bold),
+//                Font(R.font.manrope_semibold, FontWeight.SemiBold),
+//                Font(R.font.manrope_extrabold, FontWeight.ExtraBold),
+//                Font(R.font.manrope_extralight, FontWeight.ExtraLight),
+//
+//
+//            )
 
-            val fontFamily= FontFamily(
-                Font(R.font.manrope_light, FontWeight.Light),
-                Font(R.font.manrope_medium, FontWeight.Medium),
-                Font(R.font.manrope_regular, FontWeight.Normal),
-                Font(R.font.manrope_bold, FontWeight.Bold),
-                Font(R.font.manrope_semibold, FontWeight.SemiBold),
-                Font(R.font.manrope_extrabold, FontWeight.ExtraBold),
-                Font(R.font.manrope_extralight, FontWeight.ExtraLight),
-
-
-            )
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
+//            Box(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(16.dp)
+//            ) {
 //                ImageCard(painter = painter, contentDescription = description, title = title)
-
-
-                Text(buildAnnotatedString {
-                                          withStyle(
-                                              style = SpanStyle(color=Color.Blue, fontSize = 40.sp,
-                                                  FontWeight.Bold,letterSpacing = 0.5.em
-                                             )
-
-                                          ){
-                                              append("J")
-                                          }
-
-                    append("etPack ")
-                    withStyle(
-                        style = SpanStyle(color=Color.Blue, fontSize = 40.sp, letterSpacing = 0.5.em)
-
-                    ){
-                        append("C")
-                    }
-                    append("ompose")
-
-
-                }, style = TextStyle(Color.Magenta, fontSize = 30.sp,fontFamily=fontFamily, fontWeight = FontWeight.Bold, textDecoration = TextDecoration.Underline, textAlign = TextAlign.Center))
-            }
+//
+//
+//                Text(buildAnnotatedString {
+//                                          withStyle(
+//                                              style = SpanStyle(color=Color.Blue, fontSize = 40.sp,
+//                                                  FontWeight.Bold,letterSpacing = 0.5.em
+//                                             )
+//
+//                                          ){
+//                                              append("J")
+//                                          }
+//
+//                    append("etPack ")
+//                    withStyle(
+//                        style = SpanStyle(color=Color.Blue, fontSize = 40.sp, letterSpacing = 0.5.em)
+//
+//                    ){
+//                        append("C")
+//                    }
+//                    append("ompose")
+//
+//
+//                }, style = TextStyle(Color.Magenta, fontSize = 30.sp,fontFamily=fontFamily, fontWeight = FontWeight.Bold, textDecoration = TextDecoration.Underline, textAlign = TextAlign.Center))
+//            }
 
 
             //            JetPackComposeCourseTheme {
@@ -190,3 +194,20 @@ fun ImageCard(
     }
 }
 
+@Composable
+fun ColorBox(modifier: Modifier){
+    var color= remember {
+       mutableStateOf(Color.Yellow)
+    }
+
+
+
+
+
+    Box (modifier=modifier.background(
+        color.value
+    )){
+
+
+    }
+}
