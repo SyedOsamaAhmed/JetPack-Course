@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +25,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+
+import androidx.compose.ui.Alignment.Companion.BottomStart
+
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -57,44 +62,53 @@ class MainActivity : ComponentActivity() {
             var textFieldVal by remember { mutableStateOf("") }
             val scope = rememberCoroutineScope()
             Scaffold { padding ->
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padding)
-                ) {
 
-                    TextField(
-                        value = textFieldVal,
-                        label = { Text(text = "Enter text here") },
-                        onValueChange = {
-                            textFieldVal = it
-                        },
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = CenterHorizontally,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(padding)
+                    ) {
 
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth().padding(16.dp),
-                    )
+                        TextField(
+                            value = textFieldVal,
+                            label = { Text(text = "Enter text here") },
+                            onValueChange = {
+                                textFieldVal = it
+                            },
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                            singleLine = true,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                        )
 
-                    Button(onClick = {
-                        scope.launch {
-                            snackBarHostState.showSnackbar(textFieldVal)
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Button(onClick = {
+                            scope.launch {
+                                snackBarHostState.showSnackbar(textFieldVal)
+                            }
+                        }) {
+                            Text(text = "Greet")
+
                         }
-                    }) {
-                        Text(text = "Greet")
+
 
                     }
-
-
                 }
+            Box(
+                contentAlignment = BottomStart,
+                modifier=Modifier.fillMaxSize()
+            ) {
                 SnackbarHost(snackBarHostState) { _ ->
                     Snackbar {
                         Text(text = textFieldVal)
                     }
 
                 }
+            }
 
             }
 
@@ -104,7 +118,7 @@ class MainActivity : ComponentActivity() {
 //            ColorBox(modifier = Modifier.padding(14.dp).height(500.dp).width(800.dp))
     }
 
-}
+
 
 
 //@Composable
