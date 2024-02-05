@@ -25,7 +25,7 @@
 //import androidx.compose.foundation.layout.fillMaxSize
 //import androidx.compose.ui.graphics.painter.Painter
 //import androidx.compose.ui.layout.ContentScale
-//import androidx.compose.foundation.Image
+
 //import androidx.compose.ui.text.TextStyle
 //import androidx.compose.ui.Alignment
 //import androidx.compose.ui.unit.dp
@@ -42,9 +42,7 @@
 //import androidx.compose.material3.Text
 
 
-//            val painter = painterResource(id = R.drawable.desert_sunset)
-//            val description = "Sunset Dessert"
-//            val title = "Sunset View in Dessert"
+
 //            val fontFamily= FontFamily(
 //                Font(R.font.manrope_light, FontWeight.Light),
 //                Font(R.font.manrope_medium, FontWeight.Medium),
@@ -63,7 +61,7 @@
 //                    .fillMaxWidth()
 //                    .padding(16.dp)
 //            ) {
-//                ImageCard(painter = painter, contentDescription = description, title = title)
+//
 //
 //
 //                Text(buildAnnotatedString {
@@ -130,49 +128,3 @@
 //            }
 
 
-//@Composable
-//fun ImageCard(
-//    painter: Painter,
-//    contentDescription: String,
-//    title: String,
-//
-//    ) {
-//
-//    Card(
-//
-//        shape = RoundedCornerShape(15.dp),
-//        elevation = CardDefaults.cardElevation(5.dp),
-//    ) {
-//        Box(Modifier.height(200.dp)) {
-//            Image(
-//                painter = painter,
-//                contentDescription = contentDescription,
-//                contentScale = ContentScale.Crop
-//            )
-//
-//            Box(
-//                modifier = Modifier
-//                    .background(
-//                        Brush.verticalGradient(
-//                            colors = listOf(
-//                                Color.Transparent,
-//                                Color.DarkGray
-//                            ),
-//                            startY = 300f
-//
-//                        )
-//                    )
-//                    .fillMaxSize()
-//            )
-//
-//            Text(
-//                text = title, style = TextStyle(Color.White, fontSize = 16.sp), modifier = Modifier
-//                    .align(
-//                        Alignment.BottomStart
-//                    )
-//                    .padding(12.dp)
-//            )
-//
-//        }
-//    }
-//}
